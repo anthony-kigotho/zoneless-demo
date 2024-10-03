@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,8 @@ import { Component } from '@angular/core';
       <p>{{ data }}</p>
     </ng-container>
   `,
-  imports: [CommonModule]
+  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   isVisible = false;  // Controls visibility of the view
