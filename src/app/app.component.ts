@@ -1,13 +1,27 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `
+    <button (click)="toggleView()">Toggle View</button>
+    <button (click)="changeData()">Change Data</button>
+    <ng-container *ngIf="isVisible">
+      <p>{{ data }}</p>
+    </ng-container>
+  `,
+  imports: [CommonModule]
 })
 export class AppComponent {
-  title = 'zoneless-demo';
+  isVisible = false;  // Controls visibility of the view
+  data: string = 'Initial Data'; // Initial data to display
+
+  toggleView() {
+    this.isVisible = !this.isVisible; // Toggle view visibility
+  }
+
+  changeData() {
+    this.data = 'Updated Data'; // Change the data
+  }
 }
